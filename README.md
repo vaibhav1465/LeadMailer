@@ -26,12 +26,13 @@ A **Node.js + Express + TypeScript** API for sending emails using **AWS SES** wi
 ## Installation
 
 ```bash
-git clone <your-repo-url>
-cd <project-folder>
+git clone <git@github.com:vaibhav1465/LeadMailer.git>
+cd <LeadMailer>
 npm install
 
 
 # Create a .env file in the root:
+NODE_ENV=development
 SES_SENDER=your-verified-sender@example.com
 AWS_REGION=your-aws-region
 AWS_ACCESS_KEY_ID=your-access-key
