@@ -1,10 +1,8 @@
 import Joi from "joi";
-import { EmailType } from "../constants/enums";
 
 // Define TypeScript interface for the payload
 export interface EmailPayload {
   emails: string[];
-  emailType: EmailType;
   subject: string;
   downloadFileUrl: string;
 }
@@ -20,14 +18,6 @@ export const emailPayloadSchema = Joi.object<EmailPayload>({
       'array.min': '"emails" must contain at least one email',
       'string.email': 'Each item in "emails" must be a valid email address',
       'any.required': '"emails" is required',
-    }),
-
-  emailType: Joi.string()
-    .valid(...Object.values(EmailType))
-    .required()
-    .messages({
-      'any.only': `"emailType" must be one of ${Object.values(EmailType).join(', ')}`,
-      'any.required': '"emailType" is required',
     }),
 
   subject: Joi.string()

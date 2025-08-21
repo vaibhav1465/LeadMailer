@@ -37,6 +37,7 @@ SES_SENDER=your-verified-sender@example.com
 AWS_REGION=your-aws-region
 AWS_ACCESS_KEY_ID=your-access-key
 AWS_SECRET_ACCESS_KEY=your-secret-key
+DEFAULT_EMAIL_ADDRESSES = [] # Add Your Email Address 
 PORT=3000
 
 
