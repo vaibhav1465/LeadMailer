@@ -6,7 +6,7 @@ export interface EmailPayload {
   emails: string[];
   emailType: EmailType;
   subject: string;
-  message: string;
+  downloadFileUrl: string;
 }
 
 // Joi validation schema
@@ -39,12 +39,12 @@ export const emailPayloadSchema = Joi.object<EmailPayload>({
       'any.required': '"subject" is required',
     }),
 
-  message: Joi.string()
+  downloadFileUrl: Joi.string()
     .min(1)
     .required()
     .messages({
-      'string.base': '"message" must be a string',
-      'string.empty': '"message" cannot be empty',
-      'any.required': '"message" is required',
+      'string.base': '"downloadFileUrl" must be a string',
+      'string.empty': '"downloadFileUrl" cannot be empty',
+      'any.required': '"downloadFileUrl" is required',
     }),
 });

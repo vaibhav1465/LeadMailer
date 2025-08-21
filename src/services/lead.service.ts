@@ -19,7 +19,6 @@ export async function sendLeadEmail(requestBody: EmailPayload) {
     const templateContent = fs.readFileSync(templatePath, "utf-8");
     const htmlBody = ejs.render(templateContent, requestBody); // Pass payload for future dynamic content
 
-    const textBody = requestBody.message; // Fallback to plain text message
     const subject = requestBody.subject;
     const emails = requestBody.emails;
     console.log('emails: ', emails);
@@ -36,7 +35,6 @@ export async function sendLeadEmail(requestBody: EmailPayload) {
           Subject: { Data: subject, Charset: "UTF-8" },
           Body: {
             Html: { Data: htmlBody, Charset: "UTF-8" },
-            Text: { Data: textBody, Charset: "UTF-8" },
           },
         },
       },
@@ -67,7 +65,6 @@ export async function sendDefaultLeadEmail(requestBody: EmailPayload) {
     const templateContent = fs.readFileSync(templatePath, "utf-8");
     const htmlBody = ejs.render(templateContent,requestBody); // Pass payload for future dynamic content
 
-    const textBody = requestBody.message; // Fallback to plain text message
     const subject = requestBody.subject;
     const emails = ConstantsModule.DEFAULT_EMAIL_ADDRESSES;
     console.log('emails: ', emails);
@@ -87,7 +84,6 @@ export async function sendDefaultLeadEmail(requestBody: EmailPayload) {
             Subject: { Data: subject, Charset: "UTF-8" },
             Body: {
               Html: { Data: htmlBody, Charset: "UTF-8" },
-              Text: { Data: textBody, Charset: "UTF-8" },
             },
           },
         },
